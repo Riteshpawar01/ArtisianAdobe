@@ -87,11 +87,11 @@ const seedDB = async () => {
     await Product.insertMany(products);
     
     console.log('Database seeded successfully with 100 products!');
-    process.exit();
+    return { success: true, message: 'Database seeded successfully with 100 products!' };
   } catch (err) {
     console.error('Error seeding database:', err);
-    process.exit(1);
+    throw err;
   }
 };
 
-seedDB();
+module.exports = { seedDB };

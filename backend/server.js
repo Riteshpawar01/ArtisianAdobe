@@ -40,6 +40,17 @@ app.get('/health', (req, res) => {
     res.status(200).json({ status: 'ok', message: 'ArtisanAbode API is running in backend' });
 });
 
+// Temporary Seed Route
+app.get('/api/seed', async (req, res) => {
+    try {
+        const { seedDB } = require('./scripts/seedProducts');
+        const result = await seedDB();
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`🚀 Backend server running on http://localhost:${PORT}`);
 });
