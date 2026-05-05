@@ -64,7 +64,8 @@ const generateSeedProducts = (numPerSection = 20) => { // 20 per section = 100 t
           name: 'Local Artisan Co.',
         },
         inventory: {
-          stock: Math.floor(Math.random() * 50) + 5
+          stock: Math.floor(Math.random() * 50) + 5,
+          sku: `SKU-${globalId}-${Math.floor(Math.random() * 10000)}`
         }
       });
       globalId++;
