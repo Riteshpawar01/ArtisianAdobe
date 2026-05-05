@@ -76,7 +76,6 @@ const generateSeedProducts = (numPerSection = 20) => { // 20 per section = 100 t
 
 const seedDB = async () => {
   try {
-    await connectDB();
     console.log('Clearing existing products...');
     await Product.deleteMany();
     
