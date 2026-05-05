@@ -31,13 +31,13 @@ const Profile = () => {
       try {
         setLoading(true);
         // Fetch Customer Orders
-        const userRes = await fetch(`http://localhost:5005/api/orders/user/${user.id}`);
+        const userRes = await fetch(`${import.meta.env.VITE_API_URL}/api/orders/user/${user.id}`);
         const userData = await userRes.json();
         if (userData.success) setOrders(userData.data);
 
         // Fetch Vendor Orders if role is vendor
         if (user.role === 'vendor') {
-          const vendorRes = await fetch(`http://localhost:5005/api/orders/vendor/${user.id}`);
+          const vendorRes = await fetch(`${import.meta.env.VITE_API_URL}/api/orders/vendor/${user.id}`);
           const vendorData = await vendorRes.json();
           if (vendorData.success) setVendorOrders(vendorData.data);
         }
@@ -62,7 +62,7 @@ const Profile = () => {
     e.preventDefault();
     setProductMsg('');
     try {
-      const response = await fetch('http://localhost:5005/api/products', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

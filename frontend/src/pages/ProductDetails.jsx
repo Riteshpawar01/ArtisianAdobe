@@ -21,7 +21,7 @@ const ProductDetails = () => {
     window.scrollTo(0, 0);
     const fetchProductAndReviews = async () => {
       try {
-        const response = await fetch(`http://localhost:5005/api/products/${id}`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`);
         const data = await response.json();
         if (data.success) {
           const p = data.data;
@@ -38,7 +38,7 @@ const ProductDetails = () => {
           });
 
           // Fetch reviews
-          const revRes = await fetch(`http://localhost:5005/api/reviews/product/${productId}`);
+          const revRes = await fetch(`${import.meta.env.VITE_API_URL}/api/reviews/product/${productId}`);
           const revData = await revRes.json();
           if(revData.success) {
             setReviews(revData.data);
@@ -59,7 +59,7 @@ const ProductDetails = () => {
     setSubmittingReview(true);
     setReviewMsg('');
     try {
-      const response = await fetch('http://localhost:5005/api/reviews', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/reviews`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

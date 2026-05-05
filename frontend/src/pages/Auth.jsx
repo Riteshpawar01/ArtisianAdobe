@@ -44,7 +44,7 @@ const Auth = () => {
         ? { email, password } 
         : { firstName, lastName, email, password, role, storeName, location };
 
-      const response = await fetch(`http://localhost:5005${endpoint}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
